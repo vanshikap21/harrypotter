@@ -1,0 +1,362 @@
+    
+    body {
+      font-family: 'Georgia', serif;
+      margin: 0;
+      padding: 20px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+#transition-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  z-index: 9999;
+}
+body.light {
+  background-color: #ffffff;
+  color: #111;
+  /* Removed background transition to stop stretch flicker */
+  transition: color 0.5s ease;
+  background-image: url("12.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+body.dark {
+  background-color: #111111;
+  color: #f0f0f0;
+  transition: color 0.5s ease;
+  background-image: url("45 copy 2.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+}
+/* Common Card Styling */
+.card {
+  perspective: 1000px;
+  width: 250px;
+  height: 180px;
+  margin: 15px;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  background: transparent;
+  transition: box-shadow 0.5s, border 0.5s;
+}
+
+/* Light Mode Border: Golden Glow */
+.light .card {
+  border: 2px solid gold;
+  box-shadow: 0 0 8px 2px gold, 0 0 16px 4px rgba(255, 215, 0, 0.5);
+
+}
+
+/* Dark Mode Border: Silver Glow */
+.dark .card {
+  border: 2px solid silver;
+ box-shadow: 0 0 8px 2px rgb(191, 185, 185), 0 0 16px 4px rgba(50, 46, 46, 0.4);
+
+
+
+}
+
+
+   /* HEADING BASE STYLE */
+h1 {
+  text-align: center;
+  font-size: 3rem;
+  margin: 30px 0 20px;
+  letter-spacing: 2px;
+  transition: all 0.5s ease-in-out;
+}
+
+/* LIGHT THEME HEADING - Golden Glow */
+body.light h1 {
+  color: #120039;
+  text-shadow: 
+    0 0 5px #fff9c4, 
+    0 0 15px #260274, 
+    0 0 25px #180d62;
+}
+
+/* DARK THEME HEADING - Silver & Blue Glow */
+body.dark h1 {
+  color: #00353c;
+  text-shadow: 
+    0 0 5px #dbe4f0, 
+    0 0 12px #b0bec5, 
+    0 0 20px #81d4fa;
+}
+/* LIGHT THEME BUTTONS - GOLD MAGIC VIBE */
+body.light .btns button {
+  background: linear-gradient(145deg, #d4b020, #fbe27b);
+  color: #2c2c2c;
+  box-shadow: 0 0 10px rgba(238, 236, 223, 0.6), 0 0 20px rgba(255, 255, 255, 0.4);
+}
+
+body.light .btns button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 12px gold, 0 0 24px rgba(255, 215, 0, 0.8);
+}
+
+/* DARK THEME BUTTONS - SILVER GLOW VIBE */
+body.dark .btns button {
+  background: linear-gradient(145deg, #6e6d6d, #666);
+  color: #e0e0e0;
+  box-shadow: 0 0 10px rgba(192, 192, 192, 0.6), 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+body.dark .btns button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 12px rgb(181, 180, 180), 0 0 24px rgba(255, 255, 255, 0.5);
+}
+
+    .hidden { display: none; }
+
+    input, select, button {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: none;
+    }
+
+    #controls {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    #spellList, #charList, #houseList {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      perspective: 1000px;
+      cursor: pointer;
+    }
+
+    .card-inner {
+      position: relative;
+      width: 100%;
+      height: 180px;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+    }
+
+    .card:hover .card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 10px;
+      padding: 15px;
+      box-sizing: border-box;
+    }
+
+    .card-front {
+      background-color: var(--card-front);
+    }
+
+    .card-back {
+      background-color: var(--card-back);
+      transform: rotateY(180deg);
+    }
+
+    .modal {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+    }
+
+    .modal-content {
+      background: white;
+      color: black;
+      padding: 20px;
+      max-width: 400px;
+      width: 90%;
+      border-radius: 10px;
+      position: relative;
+    }
+
+    .dark .modal-content {
+      background-color: #222;
+      color: #fff;
+    }
+
+    .light .modal-content {
+      background-color: #fff;
+      color: #000;
+    }
+
+    .close-btn {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    .info-card {
+      padding: 15px;
+      border-radius: 10px;
+      background-color: var(--card-front);
+      color: var(--text);
+    }
+
+    .info-card p {
+      margin: 5px 0;
+    }
+    /* Center the button container */
+.btns {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+/* Style individual buttons */
+.btns button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Cinzel', serif;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Light theme buttons */
+body.light .btns button {
+  background: #f0e68c;
+  color: #2c2c2c;
+  border: 2px solid gold;
+}
+
+body.light .btns button:hover {
+  background: #fff8dc;
+  box-shadow: 0 0 10px gold;
+}
+
+/* Dark theme buttons */
+body.dark .btns button {
+  background: #333;
+  color: #eee;
+  border: 2px solid silver;
+}
+
+body.dark .btns button:hover {
+  background: #444;
+  box-shadow: 0 0 10px silver;
+}
+
+.character-card {
+  width: 240px;
+  height: 320px;
+  perspective: 1000px;
+  margin: 1rem;
+  transition: transform 0.8s;
+}
+
+.character-card:hover .card-front {
+  transform: rotateY(180deg);
+}
+
+.character-card:hover .card-back {
+  transform: rotateY(0);
+}
+
+.card-front, .card-back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backface-visibility: hidden;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 0 15px var(--glow);
+  padding: 1rem;
+  transition: transform 0.6s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-front {
+  background: var(--card-bg);
+  transform: rotateY(0);
+}
+
+.card-back {
+  background: var(--card-bg-alt);
+  transform: rotateY(180deg);
+}
+
+.char-img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 0.5rem;
+  border: 2px solid var(--glow);
+}
+
+/* Theme variables */
+body.light {
+  --glow: gold;
+  --card-bg: #fff8e1;
+  --card-bg-alt: #fff3cd;
+}
+
+body.dark {
+  --glow: silver;
+  --card-bg: #1e1e2f;
+  --card-bg-alt: #2c2c3f;
+}
+.house-card-clean {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 15px;
+  text-align: center;
+  padding: 20px;
+  color: #fff;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.house-card-clean:hover {
+  transform: scale(1.03);
+  box-shadow: 0 10px 25px rgba(255,255,255,0.2);
+}
+
+.house-img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  margin-bottom: 15px;
+  filter: drop-shadow(0 0 5px rgba(0,0,0,0.5));
+}

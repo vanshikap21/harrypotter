@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Harry Potter Encyclopedia</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
+
+</head>
+<body class="dark">
+  <h1>🧙‍♂️ Harry Potter Encyclopedia</h1>
+
+  <div class="btns">
+    <button onclick="showSection('spells')">🪄 Spells</button>
+    <button onclick="showSection('characters')">🧙 Characters</button>
+    <button onclick="showSection('houses')">🏰 Houses</button>
+    <button onclick="toggleTheme()">🌓 Toggle Theme</button>
+  </div>
+
+  <div id="spells" class="hidden">
+    <div id="controls">
+      <input type="text" id="searchInput" placeholder="Search spells..." />
+      <select id="typeFilter"><option value="All">All Types</option></select>
+    </div>
+    <div id="spellList">Loading spells...</div>
+  </div>
+
+  <div id="characters" class="hidden">
+    <h2>Characters</h2>
+    <div id="charList">Loading characters...</div>
+  </div>
+
+  <div id="houses" class="hidden">
+    <h2>Houses</h2>
+    <div id="houseList">Loading houses...</div>
+  </div>
+
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <span class="close-btn" id="closeModal">&times;</span>
+      <h2 id="modalName"></h2>
+      <p><strong>Type:</strong> <span id="modalType"></span></p>
+      <p><strong>Description:</strong> <span id="modalDesc"></span></p>
+    </div>
+  </div>
+<div id="transition-overlay"></div>
+  <!-- Scripts -->
+  <script src="theme.js"></script>
+  <script src="spells.js"></script>
+  <script src="characters.js"></script>
+  <script src="houses.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
